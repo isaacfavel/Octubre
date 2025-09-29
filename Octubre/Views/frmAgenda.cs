@@ -18,16 +18,26 @@ namespace Octubre.Views
             InitializeComponent();
         }
 
-        private void btnConectar_Click(object sender, EventArgs e)
+       
+
+        private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Datos data=new Datos();
-            bool conexion=data.TestConnection();
-            if (conexion) {
-                MessageBox.Show("Conectado");
+            bool resultado;
+            Datos data= new Datos();
+            string query = "INSERT INTO public.Agenda(nombre,paterno,materno," +
+                "direccion,telefono)Values('" + txtNombre.Text + "','" +
+                txtPaterno.Text + "','" + txtMaterno.Text + "','" +
+                rtbDireccion.Text + "','" + mtbTelefono.Text + "')";
+            resultado=data.ExecuteQuery(query);
+            if (resultado)
+            {
+                MessageBox.Show("Registro agregado","Siste",
+                    MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             else
-                            {
-                MessageBox.Show("No Conectado");
+            {
+                MessageBox.Show("Error al agregar el registro","Sistema",
+                    MessageBoxButtons.OK ,MessageBoxIcon.Error );
             }
         }
     }

@@ -29,6 +29,19 @@ namespace Octubre.Data
             }
         }
 
+        public bool ExecuteQuery(string query)
+        {
+            try {
+                NpgsqlCommand comando = new NpgsqlCommand(query, GetConnection());
+                comando.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+                return false;
+            }
+        }
         public bool TestConnection()
         {
             try {
