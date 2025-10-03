@@ -10,8 +10,8 @@ namespace Octubre.Data
     internal class Datos
     {
         private string connectionString = 
-            "Host=localhost;Username=admin;Password=luis;" +
-            "Database=Octubre";
+            "Host=localhost;Username=admin;Password=joseluis;" +
+            "Database=Topicos";
         private NpgsqlConnection GetConnection()
         {
             try
