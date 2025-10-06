@@ -30,6 +30,22 @@ namespace Octubre.Data
             }
         }
 
+        public DataSet getAllData(string command)
+        {
+            DataSet dataSet = new DataSet();
+            try
+            {
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(command, GetConnection());
+                da.Fill(dataSet);
+                return dataSet;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener los datos: " + ex.Message);
+                return null;
+            }
+        }
         public bool ExecuteQuery(string query)
         {
             try {

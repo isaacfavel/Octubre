@@ -25,7 +25,7 @@ namespace Octubre.Views
         {
             DataSet ds = datos.getAllData("SELECT id as \"Id\",nombre as \"Nombre\", " +
                             " apaterno as \"A. Paterno\", amaterno as \"A. Materno\"," +
-                            "direccion as \"Direccion\", telefono as \"Telefono\" FROM agenda" +
+                            "direccion as \"Direccion\", telefono as \"Telefono\" FROM \"Agenda\"" +
                             " Where Nombre like '" + txtBuscar.Text + "%'");
             if (ds != null)
             {
@@ -42,7 +42,7 @@ namespace Octubre.Views
         {
             DataSet ds = datos.getAllData("SELECT id as \"Id\",nombre as \"Nombre\", " +
                " apaterno as \"A. Paterno\", amaterno as \"A. Materno\"," +
-               "direccion as \"Direccion\", telefono as \"Telefono\" FROM agenda");
+               "direccion as \"Direccion\", telefono as \"Telefono\" FROM \"Agenda\"");
             if (ds != null)
             {
                 dgv.DataSource = ds.Tables[0];
