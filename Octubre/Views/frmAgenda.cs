@@ -24,7 +24,7 @@ namespace Octubre.Views
         {
             bool resultado;
             Datos data= new Datos();
-            string query = "INSERT INTO agenda(nombre,apaterno,amaterno," +
+            string query = "INSERT INTO \"Agenda\"(nombre,apaterno,amaterno," +
                 "direccion,telefono)Values('" + txtNombre.Text + "','" +
                 txtPaterno.Text + "','" + txtMaterno.Text + "','" +
                 rtbDireccion.Text + "','" + mtbTelefono.Text + "')";
