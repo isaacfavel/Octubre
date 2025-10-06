@@ -72,6 +72,7 @@
             this.Controls.Add(this.dgv);
             this.Name = "frmPersonas";
             this.Text = "Agenda";
+            this.Load += new System.EventHandler(this.frmPersonas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
