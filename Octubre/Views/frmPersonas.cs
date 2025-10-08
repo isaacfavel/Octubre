@@ -67,5 +67,12 @@ namespace Octubre.Views
             }
 
         }
+
+        private void toolStripEditar_Click(object sender, EventArgs e)
+        {
+            string r = dgv[0,dgv.CurrentCell.RowIndex].Value.ToString();
+            frmAgenda frm = new frmAgenda(Convert.ToInt32(r));
+            frm.ShowDialog();
+        }
     }
 }
