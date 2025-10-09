@@ -13,7 +13,7 @@ namespace Octubre.Views
 {
     public partial class frmAgenda : Form
     {
-        int id = 0;
+        int id = -1;
         public frmAgenda()
         {
             InitializeComponent();
@@ -33,28 +33,46 @@ namespace Octubre.Views
             btnAgregar.Text = "Actualizar";
         }
 
-        
 
-       
+
+
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             bool resultado;
             Datos data = new Datos();
-            string query = "INSERT INTO agenda(nombre,apaterno,amaterno," +
-                "direccion,telefono)Values('" + txtNombre.Text + "','" +
-                txtPaterno.Text + "','" +
-                rtbDireccion.Text + "','" + mtbTelefono.Text + "')";
-            resultado = data.ExecuteQuery(query);
-            if (resultado)
+            if (id == -1)
             {
-                MessageBox.Show("Registro agregado","Siste",
-                    MessageBoxButtons.OK,MessageBoxIcon.Information);
+                string query = "INSERT INTO \"Agenda\"(nombre,apaterno," +
+                    "direccion,telefono)Values('" + txtNombre.Text + "','" +
+                    txtPaterno.Text + "','" +
+                    rtbDireccion.Text + "','" + mtbTelefono.Text + "')";
+                resultado = data.ExecuteQuery(query);
+                if (resultado)
+                {
+                    MessageBox.Show("Registro agregado", "Sistema",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Error al agregar el registro", "Sistema",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
             else
             {
-                MessageBox.Show("Error al agregar el registro","Sistema",
-                    MessageBoxButtons.OK ,MessageBoxIcon.Error );
+                string query = "UPDATE \"Agenda\" SET nombre='" + txtNombre.Text+"', apaterno='"+txtPaterno+"', direccion='"+
+                    rtbDireccion.Text+"',telefono='"+mtbTelefono.Text+"' WHERE id="+id;
+                resultado = data.ExecuteQuery(query);
+                if (resultado)
+                {
+                    MessageBox.Show("Registro actulizado", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else {
+                    MessageBox.Show("Error al actulizar registro", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -62,5 +80,6 @@ namespace Octubre.Views
         {
             Close();
         }
+
     }
 }
