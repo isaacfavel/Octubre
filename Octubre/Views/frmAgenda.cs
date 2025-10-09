@@ -23,14 +23,14 @@ namespace Octubre.Views
         public frmAgenda(int id)
         {
             InitializeComponent();
-            Datos data = new Datos();  
-            DataSet ds = data.getAllData("SELECT * FROM  \"Agenda\" WEHERE id="+id);
-            txtNombre.Text = ds.Tables[0].Rows[0]["NOMBRE"].ToString();
+            Datos data = new Datos();
+            DataSet ds = data.getAllData("SELECT * FROM \"Agenda\" WHERE id=" + id);
+            txtNombre.Text = ds.Tables[0].Rows[0]["nombre"].ToString();
             txtPaterno.Text = ds.Tables[0].Rows[0]["apaterno"].ToString();
             rtbDireccion.Text = ds.Tables[0].Rows[0]["direccion"].ToString();
             mtbTelefono.Text = ds.Tables[0].Rows[0]["telefono"].ToString();
             this.id = id;
-            btnAgregar.Text="Actulizar";
+            btnAgregar.Text = "Actualizar";
         }
 
         
@@ -40,12 +40,12 @@ namespace Octubre.Views
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             bool resultado;
-            Datos data= new Datos();
-            string query = "INSERT INTO \"Agenda\"(nombre,apaterno,amaterno," +
+            Datos data = new Datos();
+            string query = "INSERT INTO agenda(nombre,apaterno,amaterno," +
                 "direccion,telefono)Values('" + txtNombre.Text + "','" +
-                txtPaterno.Text + "','" + txtMaterno.Text + "','" +
+                txtPaterno.Text + "','" +
                 rtbDireccion.Text + "','" + mtbTelefono.Text + "')";
-            resultado=data.ExecuteQuery(query);
+            resultado = data.ExecuteQuery(query);
             if (resultado)
             {
                 MessageBox.Show("Registro agregado","Siste",

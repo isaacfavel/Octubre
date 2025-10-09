@@ -23,22 +23,25 @@ namespace Octubre.Views
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
+            DataSet ds = datos.getAllData("SELECT id as \"Id\",nombre as \"Nombre\", " +
+                " apaterno as \"A. Paterno\", " +
+                "direccion as \"Direccion\", telefono as \"Telefono\" FROM agenda");
             //DataSet ds = datos.getAllData("SELECT id as \"Id\",nombre as \"Nombre\", " +
             //                " apaterno as \"A. Paterno\", amaterno as \"A. Materno\"," +
             //                "direccion as \"Direccion\", telefono as \"Telefono\" FROM \"Agenda\"" +
             //                " Where Nombre like '" + txtBuscar.Text + "%'");
-            DataSet ds = datos.getAllData(
-            "SELECT id as \"Id\", nombre as \"Nombre\", " +
-            "apaterno as \"A. Paterno\", amaterno as \"A. Materno\", " +
-            "direccion as \"Direccion\", telefono as \"Telefono\" " +
-            "FROM \"Agenda\" " +
-            "WHERE nombre ILIKE '" + txtBuscar.Text + "%' " +
-            "   OR apaterno ILIKE '" + txtBuscar.Text + "%' " +
-            "   OR amaterno ILIKE '" + txtBuscar.Text + "%' " +
-            "   OR (nombre || ' ' || apaterno || ' ' || amaterno) ILIKE '" + txtBuscar.Text + "%' " +
-            "   OR direccion ILIKE '%" + txtBuscar.Text + "%' " +
-            "   OR telefono ILIKE '%" + txtBuscar.Text + "%'"
-            );
+            //DataSet ds = datos.getAllData(
+            //"SELECT id as \"Id\", nombre as \"Nombre\", " +
+            //"apaterno as \"A. Paterno\", amaterno as \"A. Materno\", " +
+            //"direccion as \"Direccion\", telefono as \"Telefono\" " +
+            //"FROM \"Agenda\" " +
+            //"WHERE nombre ILIKE '" + txtBuscar.Text + "%' " +
+            //"   OR apaterno ILIKE '" + txtBuscar.Text + "%' " +
+            //"   OR amaterno ILIKE '" + txtBuscar.Text + "%' " +
+            //"   OR (nombre || ' ' || apaterno || ' ' || amaterno) ILIKE '" + txtBuscar.Text + "%' " +
+            //"   OR direccion ILIKE '%" + txtBuscar.Text + "%' " +
+            //"   OR telefono ILIKE '%" + txtBuscar.Text + "%'"
+            //);
 
             if (ds != null)
             {
