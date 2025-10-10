@@ -72,6 +72,7 @@
             this.toolStripEliminar.Name = "toolStripEliminar";
             this.toolStripEliminar.Size = new System.Drawing.Size(210, 24);
             this.toolStripEliminar.Text = "Eliminar";
+            this.toolStripEliminar.Click += new System.EventHandler(this.toolStripEliminar_Click);
             // 
             // txtBuscar
             // 

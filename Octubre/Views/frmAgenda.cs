@@ -62,7 +62,7 @@ namespace Octubre.Views
             }
             else
             {
-                string query = "UPDATE \"Agenda\" SET nombre='" + txtNombre.Text+"', apaterno='"+txtPaterno+"', direccion='"+
+                string query = "UPDATE \"Agenda\" SET nombre='" + txtNombre.Text+"', apaterno='"+txtPaterno.Text+"', direccion='"+
                     rtbDireccion.Text+"',telefono='"+mtbTelefono.Text+"' WHERE id="+id;
                 resultado = data.ExecuteQuery(query);
                 if (resultado)

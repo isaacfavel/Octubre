@@ -65,6 +65,7 @@ namespace Octubre.Views
             string r = dgv[0,dgv.CurrentCell.RowIndex].Value.ToString();
             frmAgenda frm = new frmAgenda(Convert.ToInt32(r));
             frm.ShowDialog();
+            mostrarDatos();
         }
 
         private void mostrarDatos()
@@ -81,6 +82,27 @@ namespace Octubre.Views
                 MessageBox.Show("Error al cargar los datos.", "Sistema",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void toolStripEliminar_Click(object sender, EventArgs e)
+        {
+            bool resultado;
+            Datos data = new Datos();
+            string r = dgv[0, dgv.CurrentCell.RowIndex].Value.ToString();
+
+            string query = "DELETE FROM \"Agenda\" WHERE id="+r;
+            resultado = data.ExecuteQuery(query);
+            if (resultado)
+            {
+                MessageBox.Show("Dato eliminado","Sistema",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Dato no elimnado", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            mostrarDatos();
+
         }
     }
 }
